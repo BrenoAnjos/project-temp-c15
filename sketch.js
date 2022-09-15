@@ -41,6 +41,9 @@ function setup() {
   bow.scale = 1;
 
   redB = new Group();
+  pinkB = new Group();
+  greenB = new Group();
+  blueB = new Group();
 
   arrowGroup = new Group();
 
@@ -83,8 +86,11 @@ function draw() {
         default: break;
       }
     }
-    if (arrowGroup.isTouching(redB)) {
+    if (arrowGroup.isTouching(redB)||arrowGroup.isTouching(pinkB)||arrowGroup.isTouching(greenB)||arrowGroup.isTouching(blueB)) {
       redB.destroyEach();
+      pinkB.destroyEach();
+      greenB.destroyEach();
+      blueB.destroyEach();
 
       gameState = END;
 
@@ -133,6 +139,7 @@ function blueBalloon() {
   blue.velocityX = 3;
   blue.lifetime = 150;
   blue.scale = 0.1;
+  blueB.add(blue);
 }
 
 function greenBalloon() {
@@ -141,6 +148,7 @@ function greenBalloon() {
   green.velocityX = 3;
   green.lifetime = 150;
   green.scale = 0.1;
+  greenB.add(green);
 }
 
 function pinkBalloon() {
@@ -149,7 +157,7 @@ function pinkBalloon() {
   pink.velocityX = 3;
   pink.lifetime = 150;
   pink.scale = 1
-
+  pinkB.add(pink);
 }
 
 // Criar flechas para o arco
