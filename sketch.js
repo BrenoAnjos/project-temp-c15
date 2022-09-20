@@ -52,8 +52,8 @@ function setup() {
 
 function draw() {
   background(0);
-  text("pontuação: " + score, 500, 50);
-  score = score + frameCount / 60;
+  
+  
   //Adicione a condição para gameState = PLAY
   if (gameState === PLAY) {
     // solo em movimento
@@ -86,15 +86,27 @@ function draw() {
         default: break;
       }
     }
-    if (arrowGroup.isTouching(redB)||arrowGroup.isTouching(pinkB)||arrowGroup.isTouching(greenB)||arrowGroup.isTouching(blueB)) {
+    if (arrowGroup.isTouching(redB)) {
       redB.destroyEach();
+      
+      
+
+      
+      score = score + 3;
+
+
+    }
+    if (arrowGroup.isTouching(pinkB)) {
       pinkB.destroyEach();
-      greenB.destroyEach();
+      score = score + 1;
+    }
+    if (arrowGroup.isTouching(blueB)) {
       blueB.destroyEach();
-
-      gameState = END;
-
-
+      score = score + 2;
+    }
+    if (arrowGroup.isTouching(greenB)) {
+      greenB.destroyEach();
+      score = score + 3;
     }
   }
   else if (gameState === END) {
@@ -107,9 +119,9 @@ scene.velocityX = 0
 
 
 
-  //escreva uma condição para o estado END
-  //Adicione o código para destruir o arco
-  //defina a velocidade do fundo como 0
+  
+  
+  
 
 
 
@@ -120,6 +132,7 @@ scene.velocityX = 0
 
   drawSprites();
   //Adicione a condição de texto para exibir a pontuação.
+  text("pontuação: " + score, 300, 50);
 
 }
 
